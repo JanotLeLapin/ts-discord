@@ -1,10 +1,14 @@
 import * as axios from 'axios';
 
-class Client {
-    token = '';
+export class Client {
+    _token: any = null;
 
-    constructor (token:string) {
-        this.token = token;
+    /**
+     * @method: Initialize client
+     * @param {string} token - Bearer access token provided by Discord
+     */
+    constructor (token: string) {
+        this._token = token;
     }
 
     /**
@@ -12,11 +16,20 @@ class Client {
      */
     getUser() {
         axios.default.get('https://discord.com/api/users/@me', {
-            headers: 'Bearer ' + this.token,
+            headers: 'Bearer ' + this._token,
         })
             .then(res => { return res.data })
-            .catch(err => { return err.response });
+            .catch(err => { throw err });
+    }
+
+    /**
+     * @method: Get guilds of user from token
+     */
+    getGuilds() {
+        axios.default.get('https://discord.com/api/users/@me/guilds', {
+            headers: 'Bearer ' + this._token,
+        })
+            .then(res => { return res.data })
+            .catch(err => { throw err })
     }
 }
-
-export default Client;
