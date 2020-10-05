@@ -1,5 +1,5 @@
 export declare class Client {
-    _token: any;
+    token: any;
     /**
      * @method: Initialize client
      * @param {string} token - Bearer access token provided by Discord
