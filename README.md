@@ -1,17 +1,17 @@
 # ts-discord
 A wrapper for the Discord API written in TypeScript
 
-### Installation
+## Installation
 ```
 npm i --save ts-discord
 # or
 yarn add ts-discord
 ```
 
-### Example usage
+## Example usage
 ```js
 const Discord = require('ts-discord');
-dateconst client = new Discord.Client('<OAuth2 bearer access token provided by the OAuth2 API>');
+dateconst client = new Discord.Client('OAuth2 bearer token provided by the OAuth2 API');
 
 client.fetchUser()
   .then(user => console.log(user.username + '#' + user.discriminator))
