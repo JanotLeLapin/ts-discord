@@ -13,7 +13,7 @@ yarn add ts-discord
 const Discord = require('ts-discord');
 const client = new Discord.Client('<Bearer access token provided by Discord>');
 
-client.getUser()
+client.fetchUser()
   .then(user => console.log(user.username + '#' + user.discriminator))
   .catch(err => console.error(err));
 ```
