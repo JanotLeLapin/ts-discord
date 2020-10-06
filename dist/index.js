@@ -14,7 +14,7 @@ var Client = /** @class */ (function () {
     /**
      * @method: Get user from token
      */
-    Client.prototype.getUser = function () {
+    Client.prototype.fetchUser = function () {
         var _this = this;
         return new Promise(function (resolve, reject) {
             axios.default.get('https://discord.com/api/users/@me', {
@@ -29,7 +29,7 @@ var Client = /** @class */ (function () {
     /**
      * @method: Get guilds of user from token
      */
-    Client.prototype.getGuilds = function () {
+    Client.prototype.fetchGuilds = function () {
         var _this = this;
         return new Promise(function (resolve, reject) {
             axios.default.get('https://discord.com/api/users/@me/guilds', {
