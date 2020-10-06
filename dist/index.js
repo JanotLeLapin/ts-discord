@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Client = void 0;
-var request = require("request-promise-native");
+var axios = require("axios");
 var Client = /** @class */ (function () {
     /**
      * @method: Initialize client
@@ -15,7 +15,7 @@ var Client = /** @class */ (function () {
      * @method: Get user from token
      */
     Client.prototype.getUser = function () {
-        request.get('https://discord.com/api/users/@me', {
+        axios.default.get('https://discord.com/api/users/@me', {
             headers: {
                 'Authorization': 'Bearer ' + this.token,
             },
@@ -27,7 +27,7 @@ var Client = /** @class */ (function () {
      * @method: Get guilds of user from token
      */
     Client.prototype.getGuilds = function () {
-        request.get('https://discord.com/api/users/@me/guilds', {
+        axios.default.get('https://discord.com/api/users/@me/guilds', {
             headers: {
                 'Authorization': 'Bearer ' + this.token,
             },
@@ -38,3 +38,5 @@ var Client = /** @class */ (function () {
     return Client;
 }());
 exports.Client = Client;
+var client = new Client('test');
+console.log(client.getUser());
