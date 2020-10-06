@@ -1,5 +1,6 @@
 import User from './interfaces/User';
 import Guild from './interfaces/Guild';
+import Connection from './interfaces/Connection';
 export declare class Client {
     #private;
     /**
@@ -8,11 +9,15 @@ export declare class Client {
      */
     constructor(token: string);
     /**
-     * @method: Get user from token
+     * @method: Get current user
      */
     fetchUser(): Promise<User>;
     /**
-     * @method: Get guilds of user from token
+     * @method: Get guilds of current user
      */
     fetchGuilds(): Promise<Guild[]>;
+    /**
+     * @method: Get connections of current user
+     */
+    fetchConnections(): Promise<Connection[]>;
 }
