@@ -15,5 +15,4 @@ export declare class Client {
      * @method: Get guilds of user from token
      */
     fetchGuilds(): Promise<Guild[]>;
-    fetchDMs(): Promise<any>;
 }
