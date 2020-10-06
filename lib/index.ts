@@ -43,16 +43,4 @@ export class Client {
                 .catch(err => reject(err));
         });
     }
-
-    fetchDMs(): Promise<any> {
-        return new Promise<any>((resolve, reject) => {
-            axios.default.get('https://discord.com/api/users/@me/channels', {
-                headers: {
-                    'Authorization': 'Bearer ' + this.#token,
-                },
-            })
-                .then(res => resolve(res.data))
-                .catch(err => reject(err));
-        });
-    }
 }
