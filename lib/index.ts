@@ -4,6 +4,7 @@ import User from './interfaces/User';
 import Guild from './interfaces/Guild';
 import Connection from './interfaces/Connection';
 
+const imageBaseUrl = 'https://cdn.discordapp.com/';
 const baseUrl = 'https://discord.com/api/';
 
 export class Client {
@@ -27,8 +28,12 @@ export class Client {
                     'Authorization': 'Bearer ' + this.#token,
                 },
             })
-                .then(res => resolve(res.data))
-                .catch(err => reject(err));
+                .then(res => {
+                    const data: User = res.data;
+                    if (data.avatar) data.avatarURL = imageBaseUrl + 'avatars/' + data.id + '/' + data.avatar;
+                    resolve(data);
+                })
+                .catch(err => reject(err.response.data));
         });
     }
 
@@ -42,8 +47,12 @@ export class Client {
                     'Authorization': 'Bearer ' + this.#token,
                 },
             })
-                .then(res => resolve(res.data))
-                .catch(err => reject(err));
+                .then(res => {
+                    const data: Guild[] = res.data;
+                    data.forEach(guild => { if (guild.icon) guild.iconURL = imageBaseUrl + 'icons/' + guild.id + '/' + guild.icon });
+                    resolve(data);
+                })
+                .catch(err => reject(err.response.data));
         });
     }
 
@@ -58,7 +67,7 @@ export class Client {
                 },
             })
                 .then(res => resolve(res.data))
-                .catch(err => reject(err));
+                .catch(err => reject(err.response.data));
         });
     }
 }
