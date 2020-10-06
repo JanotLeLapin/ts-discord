@@ -4,14 +4,14 @@ import User from './interfaces/User';
 import Guild from './interfaces/Guild';
 
 export class Client {
-    token: any = null;
+    #token: any = null;
 
     /**
      * @method: Initialize client
      * @param {string} token - Bearer access token provided by Discord
      */
     constructor (token: string) {
-        this.token = token;
+        this.#token = token;
     }
 
     /**
@@ -21,7 +21,7 @@ export class Client {
         return new Promise<User>((resolve, reject) => {
             axios.default.get('https://discord.com/api/users/@me', {
                 headers: {
-                    'Authorization': 'Bearer ' + this.token,
+                    'Authorization': 'Bearer ' + this.#token,
                 },
             })
                 .then(res => resolve(res.data))
@@ -36,7 +36,7 @@ export class Client {
         return new Promise<Guild[]>((resolve, reject) => {
             axios.default.get('https://discord.com/api/users/@me/guilds', {
                 headers: {
-                    'Authorization': 'Bearer ' + this.token,
+                    'Authorization': 'Bearer ' + this.#token,
                 },
             })
                 .then(res => resolve(res.data))
