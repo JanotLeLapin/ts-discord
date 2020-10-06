@@ -4,7 +4,7 @@ export declare class Client {
     #private;
     /**
      * @method: Initialize client
-     * @param {string} token - Bearer access token provided by Discord
+     * @param {string} token - OAuth2 bearer access token provided by the OAuth2 API.
      */
     constructor(token: string);
     /**

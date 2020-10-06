@@ -2,10 +2,11 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Client = void 0;
 const axios = require("axios");
+const baseUrl = 'https://discord.com/api/';
 class Client {
     /**
      * @method: Initialize client
-     * @param {string} token - Bearer access token provided by Discord
+     * @param {string} token - OAuth2 bearer access token provided by the OAuth2 API.
      */
     constructor(token) {
         this.#token = null;
@@ -17,7 +18,7 @@ class Client {
      */
     fetchUser() {
         return new Promise((resolve, reject) => {
-            axios.default.get('https://discord.com/api/users/@me', {
+            axios.default.get(baseUrl + 'users/@me', {
                 headers: {
                     'Authorization': 'Bearer ' + this.#token,
                 },
@@ -31,7 +32,7 @@ class Client {
      */
     fetchGuilds() {
         return new Promise((resolve, reject) => {
-            axios.default.get('https://discord.com/api/users/@me/guilds', {
+            axios.default.get(baseUrl + 'users/@me/guilds', {
                 headers: {
                     'Authorization': 'Bearer ' + this.#token,
                 },
