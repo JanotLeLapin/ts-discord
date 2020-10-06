@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Client = void 0;
 const axios_1 = require("axios");
+const imageBaseUrl = 'https://cdn.discordapp.com/';
 const baseUrl = 'https://discord.com/api/';
 class Client {
     /**
@@ -23,8 +24,13 @@ class Client {
                     'Authorization': 'Bearer ' + this.#token,
                 },
             })
-                .then(res => resolve(res.data))
-                .catch(err => reject(err));
+                .then(res => {
+                const data = res.data;
+                if (data.avatar)
+                    data.avatarURL = imageBaseUrl + 'avatars/' + data.id + '/' + data.avatar;
+                resolve(data);
+            })
+                .catch(err => reject(err.response.data));
         });
     }
     /**
@@ -37,8 +43,13 @@ class Client {
                     'Authorization': 'Bearer ' + this.#token,
                 },
             })
-                .then(res => resolve(res.data))
-                .catch(err => reject(err));
+                .then(res => {
+                const data = res.data;
+                data.forEach(guild => { if (guild.icon)
+                    guild.iconURL = imageBaseUrl + 'icons/' + guild.id + '/' + guild.icon; });
+                resolve(data);
+            })
+                .catch(err => reject(err.response.data));
         });
     }
     /**
@@ -52,7 +63,7 @@ class Client {
                 },
             })
                 .then(res => resolve(res.data))
-                .catch(err => reject(err));
+                .catch(err => reject(err.response.data));
         });
     }
 }

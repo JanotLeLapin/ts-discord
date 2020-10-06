@@ -3,6 +3,7 @@ export default interface Guild {
     id: string;
     name: string;
     icon: string;
+    iconURL?: string;
     owner: boolean;
     permissions: number;
     features: feature[];
