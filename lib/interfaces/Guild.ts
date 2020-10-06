@@ -12,7 +12,7 @@ type feature =
 | 'ANIMATED_ICON'
 | 'BANNER'
 | 'PUBLIC_DISABLED'
-| 'WELCOME_SCREEN_ENABLED'
+| 'WELCOME_SCREEN_ENABLED';
 
 export default interface Guild {
     id: string;
