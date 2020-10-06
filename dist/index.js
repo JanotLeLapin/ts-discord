@@ -44,6 +44,3 @@ var Client = /** @class */ (function () {
     return Client;
 }());
 exports.Client = Client;
-var client = new Client('nNX8tEtxilhFO6nnrBSRI4bkR5gLBw');
-client.getGuilds()
-    .then(function (guilds) { return console.log(guilds[0].features); });
