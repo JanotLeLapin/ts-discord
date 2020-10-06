@@ -1,6 +1,13 @@
 # ts-discord
 A wrapper for the Discord API written in TypeScript
 
+### Installation
+```
+npm i --save ts-discord
+# or
+yarn add ts-discord
+```
+
 ### Example usage
 ```js
 const Discord = require('ts-discord');
