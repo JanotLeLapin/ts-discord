@@ -1,4 +1,4 @@
-import * as request from 'request-promise-native';
+import * as axios from 'axios';
 
 export class Client {
     token: any = null;
@@ -15,7 +15,7 @@ export class Client {
      * @method: Get user from token
      */
     getUser() {
-        request.get('https://discord.com/api/users/@me', {
+        axios.default.get('https://discord.com/api/users/@me', {
             headers: {
                 'Authorization': 'Bearer ' + this.token,
             },
@@ -28,7 +28,7 @@ export class Client {
      * @method: Get guilds of user from token
      */
     getGuilds() {
-        request.get('https://discord.com/api/users/@me/guilds', {
+        axios.default.get('https://discord.com/api/users/@me/guilds', {
             headers: {
                 'Authorization': 'Bearer ' + this.token,
             },
