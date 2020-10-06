@@ -1,7 +1,7 @@
 import User from './interfaces/User';
 import Guild from './interfaces/Guild';
 export declare class Client {
-    token: any;
+    #private;
     /**
      * @method: Initialize client
      * @param {string} token - Bearer access token provided by Discord

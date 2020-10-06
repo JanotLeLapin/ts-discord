@@ -1,46 +1,44 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Client = void 0;
-var axios = require("axios");
-var Client = /** @class */ (function () {
+const axios = require("axios");
+class Client {
     /**
      * @method: Initialize client
      * @param {string} token - Bearer access token provided by Discord
      */
-    function Client(token) {
-        this.token = null;
-        this.token = token;
+    constructor(token) {
+        this.#token = null;
+        this.#token = token;
     }
+    #token;
     /**
      * @method: Get user from token
      */
-    Client.prototype.fetchUser = function () {
-        var _this = this;
-        return new Promise(function (resolve, reject) {
+    fetchUser() {
+        return new Promise((resolve, reject) => {
             axios.default.get('https://discord.com/api/users/@me', {
                 headers: {
-                    'Authorization': 'Bearer ' + _this.token,
+                    'Authorization': 'Bearer ' + this.#token,
                 },
             })
-                .then(function (res) { return resolve(res.data); })
-                .catch(function (err) { return reject(err); });
+                .then(res => resolve(res.data))
+                .catch(err => reject(err));
         });
-    };
+    }
     /**
      * @method: Get guilds of user from token
      */
-    Client.prototype.fetchGuilds = function () {
-        var _this = this;
-        return new Promise(function (resolve, reject) {
+    fetchGuilds() {
+        return new Promise((resolve, reject) => {
             axios.default.get('https://discord.com/api/users/@me/guilds', {
                 headers: {
-                    'Authorization': 'Bearer ' + _this.token,
+                    'Authorization': 'Bearer ' + this.#token,
                 },
             })
-                .then(function (res) { return resolve(res.data); })
-                .catch(function (err) { return reject(err); });
+                .then(res => resolve(res.data))
+                .catch(err => reject(err));
         });
-    };
-    return Client;
-}());
+    }
+}
 exports.Client = Client;
