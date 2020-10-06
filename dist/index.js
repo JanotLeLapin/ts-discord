@@ -38,5 +38,3 @@ var Client = /** @class */ (function () {
     return Client;
 }());
 exports.Client = Client;
-var client = new Client('test');
-console.log(client.getUser());
