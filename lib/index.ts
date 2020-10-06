@@ -63,7 +63,3 @@ export class Client {
         });
     }
 }
-
-const client = new Client('nNX8tEtxilhFO6nnrBSRI4bkR5gLBw');
-client.getGuilds()
-    .then(guilds => console.log(guilds[0].features));
