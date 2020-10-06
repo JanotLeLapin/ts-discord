@@ -1,26 +1,7 @@
 import * as axios from 'axios';
 
-interface User {
-    id:            string;
-    username:      string;
-    avatar:        string;
-    discriminator: string;
-    public_flags:  number;
-    flags:         number;
-    locale:        string;
-    mfa_enabled:   boolean;
-}
-
-type feature = "BANNER" | "COMMUNITY" | "ANIMATED_ICON" | "INVITE_SPLASH" | "NEWS";
-interface Guild {
-    id:              string;
-    name:            string;
-    icon:            string;
-    owner:           boolean;
-    permissions:     number;
-    features:        feature[];
-    permissions_new: string;
-}
+import User from './interfaces/User';
+import Guild from './interfaces/Guild';
 
 export class Client {
     token: any = null;
@@ -36,7 +17,7 @@ export class Client {
     /**
      * @method: Get user from token
      */
-    getUser(): Promise<User> {
+    fetchUser(): Promise<User> {
         return new Promise<User>((resolve, reject) => {
             axios.default.get('https://discord.com/api/users/@me', {
                 headers: {
@@ -51,7 +32,7 @@ export class Client {
     /**
      * @method: Get guilds of user from token
      */
-    getGuilds(): Promise<Guild[]> {
+    fetchGuilds(): Promise<Guild[]> {
         return new Promise<Guild[]>((resolve, reject) => {
             axios.default.get('https://discord.com/api/users/@me/guilds', {
                 headers: {
