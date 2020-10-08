@@ -8,7 +8,7 @@ const imageBaseUrl = 'https://cdn.discordapp.com/';
 const baseUrl = 'https://discord.com/api/';
 
 export default class Client {
-    #token: any = null;
+    #token: string;
 
     /**
      * @method: Initialize client
