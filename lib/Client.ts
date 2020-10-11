@@ -8,14 +8,14 @@ const imageBaseUrl = 'https://cdn.discordapp.com/';
 const baseUrl = 'https://discord.com/api/';
 
 export default class Client {
-    #token: any = null;
+    token: any = null;
 
     /**
      * @method: Initialize client
      * @param {string} token - OAuth2 bearer access token provided by the OAuth2 API.
      */
     constructor (token: string) {
-        this.#token = token;
+        this.token = token;
     }
 
     /**
@@ -25,7 +25,7 @@ export default class Client {
         return new Promise((resolve, reject) => {
             axios.get(baseUrl + 'users/@me', {
                 headers: {
-                    'Authorization': 'Bearer ' + this.#token,
+                    'Authorization': 'Bearer ' + this.token,
                 },
             })
                 .then(res => {
@@ -44,7 +44,7 @@ export default class Client {
         return new Promise((resolve, reject) => {
             axios.get(baseUrl + 'users/@me/guilds', {
                 headers: {
-                    'Authorization': 'Bearer ' + this.#token,
+                    'Authorization': 'Bearer ' + this.token,
                 },
             })
                 .then(res => {
@@ -63,7 +63,7 @@ export default class Client {
         return new Promise((resolve, reject) => {
             axios.get(baseUrl + 'users/@me/connections', {
                 headers: {
-                    'Authorization': 'Bearer ' + this.#token,
+                    'Authorization': 'Bearer ' + this.token,
                 },
             })
                 .then(res => resolve(res.data))

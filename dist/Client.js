@@ -9,10 +9,9 @@ class Client {
      * @param {string} token - OAuth2 bearer access token provided by the OAuth2 API.
      */
     constructor(token) {
-        this.#token = null;
-        this.#token = token;
+        this.token = null;
+        this.token = token;
     }
-    #token;
     /**
      * @method: Get current user
      */
@@ -20,7 +19,7 @@ class Client {
         return new Promise((resolve, reject) => {
             axios_1.default.get(baseUrl + 'users/@me', {
                 headers: {
-                    'Authorization': 'Bearer ' + this.#token,
+                    'Authorization': 'Bearer ' + this.token,
                 },
             })
                 .then(res => {
@@ -39,7 +38,7 @@ class Client {
         return new Promise((resolve, reject) => {
             axios_1.default.get(baseUrl + 'users/@me/guilds', {
                 headers: {
-                    'Authorization': 'Bearer ' + this.#token,
+                    'Authorization': 'Bearer ' + this.token,
                 },
             })
                 .then(res => {
@@ -58,7 +57,7 @@ class Client {
         return new Promise((resolve, reject) => {
             axios_1.default.get(baseUrl + 'users/@me/connections', {
                 headers: {
-                    'Authorization': 'Bearer ' + this.#token,
+                    'Authorization': 'Bearer ' + this.token,
                 },
             })
                 .then(res => resolve(res.data))

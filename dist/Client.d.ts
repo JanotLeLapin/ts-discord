@@ -2,7 +2,7 @@ import User from './interfaces/User';
 import Guild from './interfaces/Guild';
 import Connection from './interfaces/Connection';
 export default class Client {
-    #private;
+    token: any;
     /**
      * @method: Initialize client
      * @param {string} token - OAuth2 bearer access token provided by the OAuth2 API.
